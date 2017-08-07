@@ -116,18 +116,33 @@ add_action( 'widgets_init', '_s_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
-function _s_scripts() {
+function template_scripts() {
+
+	//source bootstrap css files
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/resources/bootstrap/css/bootstrap.css');
+
 	wp_enqueue_style( '_s-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	//update jquery
+	wp_dequeue_script ( 'jquery' );
 
-	wp_enqueue_script( '_s-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script ( 'jquery_2', get_template_directory_uri() . '/resources/jquery/jquery.min.js' );
+
+	//source tether (required for bootstrap)
+	wp_enqueue_script ( 'tether', get_template_directory_uri() . '/resources/tether/tether.min.js', array( 'jquery_2' ) );
+
+	//bootstrap.js
+	wp_enqueue_script ( 'bootstrap_js', get_template_directory_uri() . '/resources/bootstrap/js/bootstrap.min.js', array( 'jquery_2', 'tether' ) );
+
+	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery_2'), '20151215', true );
+
+	wp_enqueue_script( '_s-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array( 'jquery_2' ), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', '_s_scripts' );
+add_action( 'wp_enqueue_scripts', 'template_scripts' );
 
 /**
  * Implement the Custom Header feature.
