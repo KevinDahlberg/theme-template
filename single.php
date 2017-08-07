@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area container-fluid">
+	<div id="primary" class="container-fluid">
 		<div id="main" class="site-main row">
 			<div id="content" class="col-sm-8">
 				<?php
