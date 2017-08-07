@@ -123,20 +123,18 @@ function template_scripts() {
 
 	wp_enqueue_style( '_s-style', get_stylesheet_uri() );
 
-	//update jquery
-	wp_dequeue_script ( 'jquery' );
-
-	wp_enqueue_script ( 'jquery_2', get_template_directory_uri() . '/resources/jquery/jquery.min.js' );
-
 	//source tether (required for bootstrap)
-	wp_enqueue_script ( 'tether', get_template_directory_uri() . '/resources/tether/tether.min.js', array( 'jquery_2' ) );
+	wp_enqueue_script ( 'tether', get_template_directory_uri() . '/resources/tether/tether.min.js', array( 'jquery' ) );
 
 	//bootstrap.js
-	wp_enqueue_script ( 'bootstrap_js', get_template_directory_uri() . '/resources/bootstrap/js/bootstrap.min.js', array( 'jquery_2', 'tether' ) );
+	wp_enqueue_script ( 'bootstrap_js', get_template_directory_uri() . '/resources/bootstrap/js/bootstrap.min.js', array( 'jquery', 'tether' ) );
 
-	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery_2'), '20151215', true );
+	//js files to make bootstrap options work with wordpress
+	wp_enqueue_script ( 'navClasses', get_template_directory_uri() . '/js/navClasses.js', array( ), '1.0', true );
 
-	wp_enqueue_script( '_s-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array( 'jquery_2' ), '20151215', true );
+	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array( ), '20151215', true );
+
+	wp_enqueue_script( '_s-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array( ), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
