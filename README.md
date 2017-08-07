@@ -23,6 +23,6 @@ As my experience with this theme, Bootstrap, and Wordpress continues, this theme
   - removed some redundant CSS from they main CSS file.
 
 ## Resources and Acknowledgments
-- [Bootstrap 4 Documentation] (https://v4-alpha.getbootstrap.com/getting-started/introduction/)
-- [`_s` theme] (https://github.com/Automattic/_s)
-- [Wordpress Developer Resources] (https://developer.wordpress.org)
+- [Bootstrap 4 Documentation](https://v4-alpha.getbootstrap.com/getting-started/introduction/)
+- [`_s` theme](https://github.com/Automattic/_s)
+- [Wordpress Developer Resources](https://developer.wordpress.org)
